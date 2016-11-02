@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2016 at 05:03 PM
+-- Generation Time: Nov 02, 2016 at 07:04 PM
 -- Server version: 5.5.50-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.19
 
@@ -23,28 +23,15 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Actor`
+-- Table structure for table `Biography`
 --
 
-CREATE TABLE IF NOT EXISTS `Actor` (
-  `ActorID` int(11) NOT NULL,
-  `Name` varchar(20) NOT NULL,
-  `DateOfBirth` varchar(10) NOT NULL,
-  PRIMARY KEY (`ActorID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Director`
---
-
-CREATE TABLE IF NOT EXISTS `Director` (
-  `DirectorID` int(11) NOT NULL,
-  `Name` varchar(20) NOT NULL,
-  `DateOfBirth` varchar(10) NOT NULL,
-  PRIMARY KEY (`DirectorID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `Biography` (
+  `bioId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `dateofbirth` varchar(11) NOT NULL,
+  PRIMARY KEY (`bioId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -54,9 +41,9 @@ CREATE TABLE IF NOT EXISTS `Director` (
 
 CREATE TABLE IF NOT EXISTS `Directs` (
   `MovieID` int(11) NOT NULL,
-  `DirectorID` int(11) NOT NULL,
+  `bioId` int(11) NOT NULL,
   KEY `MovieID` (`MovieID`),
-  KEY `DirectorID` (`DirectorID`)
+  KEY `DirectorID` (`bioId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -66,13 +53,21 @@ CREATE TABLE IF NOT EXISTS `Directs` (
 --
 
 CREATE TABLE IF NOT EXISTS `Movie` (
-  `MovieID` int(11) NOT NULL,
+  `MovieID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(100) NOT NULL,
   `Rating` decimal(6,2) NOT NULL,
   `Gross` decimal(12,2) NOT NULL,
   `Genre` varchar(20) NOT NULL,
   PRIMARY KEY (`MovieID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `Movie`
+--
+
+INSERT INTO `Movie` (`MovieID`, `Name`, `Rating`, `Gross`, `Genre`) VALUES
+(1, 'The Thing', 8.20, 0.00, 'Horror'),
+(2, 'Escape from New York', 7.20, 0.00, 'Sci-Fi');
 
 -- --------------------------------------------------------
 
@@ -96,11 +91,11 @@ CREATE TABLE IF NOT EXISTS `Runtime` (
 
 CREATE TABLE IF NOT EXISTS `Stars` (
   `MovieID` int(11) NOT NULL,
-  `ActorID` int(11) NOT NULL,
+  `bioId` int(11) NOT NULL,
   `Role` varchar(20) NOT NULL,
   `Billing` smallint(6) NOT NULL,
   KEY `MovieID` (`MovieID`),
-  KEY `ActorID` (`ActorID`)
+  KEY `ActorID` (`bioId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -110,10 +105,10 @@ CREATE TABLE IF NOT EXISTS `Stars` (
 --
 
 CREATE TABLE IF NOT EXISTS `User` (
-  `UserID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` int(11) NOT NULL,
   PRIMARY KEY (`UserID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -133,25 +128,14 @@ CREATE TABLE IF NOT EXISTS `UserLibrary` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Writer`
---
-
-CREATE TABLE IF NOT EXISTS `Writer` (
-  `WriterID` int(11) NOT NULL,
-  `Name` varchar(20) NOT NULL,
-  `DateOfBirth` varchar(10) NOT NULL,
-  PRIMARY KEY (`WriterID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `Writes`
 --
 
 CREATE TABLE IF NOT EXISTS `Writes` (
   `MovieID` int(11) NOT NULL,
-  `WriterID` int(11) NOT NULL
+  `bioId` int(11) NOT NULL,
+  KEY `MovieID` (`MovieID`),
+  KEY `bioId` (`bioId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -162,14 +146,14 @@ CREATE TABLE IF NOT EXISTS `Writes` (
 -- Constraints for table `Directs`
 --
 ALTER TABLE `Directs`
-  ADD CONSTRAINT `Directs_ibfk_2` FOREIGN KEY (`DirectorID`) REFERENCES `Director` (`DirectorID`),
+  ADD CONSTRAINT `Directs_ibfk_2` FOREIGN KEY (`bioId`) REFERENCES `Biography` (`bioId`),
   ADD CONSTRAINT `Directs_ibfk_1` FOREIGN KEY (`MovieID`) REFERENCES `Movie` (`MovieID`);
 
 --
 -- Constraints for table `Stars`
 --
 ALTER TABLE `Stars`
-  ADD CONSTRAINT `Stars_ibfk_2` FOREIGN KEY (`ActorID`) REFERENCES `Actor` (`ActorID`),
+  ADD CONSTRAINT `Stars_ibfk_2` FOREIGN KEY (`bioId`) REFERENCES `Biography` (`bioId`),
   ADD CONSTRAINT `Stars_ibfk_1` FOREIGN KEY (`MovieID`) REFERENCES `Movie` (`MovieID`);
 
 --
@@ -178,6 +162,13 @@ ALTER TABLE `Stars`
 ALTER TABLE `UserLibrary`
   ADD CONSTRAINT `UserLibrary_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`),
   ADD CONSTRAINT `UserLibrary_ibfk_1` FOREIGN KEY (`MovieID`) REFERENCES `Movie` (`MovieID`);
+
+--
+-- Constraints for table `Writes`
+--
+ALTER TABLE `Writes`
+  ADD CONSTRAINT `Writes_ibfk_2` FOREIGN KEY (`bioId`) REFERENCES `Biography` (`bioId`),
+  ADD CONSTRAINT `Writes_ibfk_1` FOREIGN KEY (`MovieID`) REFERENCES `Movie` (`MovieID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
