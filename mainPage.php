@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+<!-- 
+This is just a base, still working on multiple where statements for query.
+-->
     <?php
     session_start();
     
@@ -14,7 +16,7 @@
         $db = "TeamDB";
         $port = 3306;
         
-         $connection = mysqli_connect($host, $user, $pass, $db, $port)or die(mysql_error());
+        $connection = mysqli_connect($host, $user, $pass, $db, $port)or die(mysql_error());
     
         $query = "SELECT * FROM Movies";
         $result = mysqli_query($connection, $query);
