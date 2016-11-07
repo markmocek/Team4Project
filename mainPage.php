@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 
-This is just a base, still working on multiple where statements for query.
--->
+    
     <?php
     session_start();
     
@@ -16,7 +14,7 @@ This is just a base, still working on multiple where statements for query.
         $db = "TeamDB";
         $port = 3306;
         
-        $connection = mysqli_connect($host, $user, $pass, $db, $port)or die(mysql_error());
+         $connection = mysqli_connect($host, $user, $pass, $db, $port)or die(mysql_error());
     
         $query = "SELECT * FROM Movies";
         $result = mysqli_query($connection, $query);
@@ -32,13 +30,15 @@ This is just a base, still working on multiple where statements for query.
             <div class = "genreFilterTxt">
                <b>Genre</b>
             </div>
-            <div class = "price">
-                    <input type="radio" name="genre" value="Horror"> Horror
-                    <input type="radio" name="genre" value="Western"> Western
-                    <input type="radio" name="genre" value="War"> War
-                    <input type="radio" name="genre" value="Sci-Fi"> Sci-Fi
-                    <input type="radio" name="genre" checked="checked" value="All"> All
-            </div>
+       <!-- ************************Genre Filter************************************ -->
+       <!-- -->   <div class = "price">
+       <!-- -->           <input type="radio" name="genre" value="Horror"> Horror
+       <!-- -->           <input type="radio" name="genre" value="Western"> Western
+       <!-- -->           <input type="radio" name="genre" value="War"> War
+       <!-- -->           <input type="radio" name="genre" value="Sci-Fi"> Sci-Fi
+       <!-- -->           <input type="radio" name="genre" checked="checked" value="%"> All
+       <!-- -->   </div>
+       <!-- ************************************************************************ -->    
         </div>
         
         <div class = "yearFilter">
@@ -79,28 +79,21 @@ This is just a base, still working on multiple where statements for query.
     
     
     <div class="Movies">
+        
         <form name="addToCart" method="post">
             <?php
         
-                // if ($_SESSION['genre'] = 'Horror')
-                // {
-                //     $query = "SELECT * FROM Movie WHERE Genre = 'Horror'";
-                // }
-                
-                // if ($_SESSION['genre'] = 'War')
-                // {
-                //     $query = "SELECT * FROM Movie WHERE Genre = 'War'";
-                // }
-                
-                $query = "SELECT * FROM Movie WHERE Genre = '" . $_POST['genre'] . "'";
-                
-                $result = mysqli_query($connection, $query);
-    
-                while ($row = mysqli_fetch_assoc($result))
-                {
-                    echo $row['Name'] . " " . $row['Rating'] . " " . $row['Gross'] . " " . $row['Genre'] . " " . $row['Year'] ."<br>";
-                }
-                
+        //************************Generates CheckList from DB*********************
+        /**/    $query = "SELECT * FROM Movie WHERE Genre like '" . $_POST['genre'] . "'";
+        /**/        
+        /**/        $result = mysqli_query($connection, $query);
+        /**/
+        /**/         while ($row = mysqli_fetch_assoc($result))
+        /**/         {
+        /**/             echo  "<input type='checkbox' name='name' value=''>";
+        /**/            echo $row['Name'] . " " . $row['Rating'] . " " . $row['Gross'] . " " . $row['Genre'] . " " . $row['Year'] ."<br>";
+        /**/        }
+        //***********************************************************************       
               
         
             ?>
