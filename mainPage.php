@@ -99,6 +99,12 @@ This is just a base, still working on multiple where statements for query.
                 while ($row = mysqli_fetch_assoc($result))
                 {
                     echo $row['Name'] . " " . $row['Rating'] . " " . $row['Gross'] . " " . $row['Genre'] . " " . $row['Year'] ."<br>";
+                    
+                    $query2 = "SELECT * FROM Stars inner join Actor ON Stars.MovieId=Actor.MovieId WHERE MovieId = '" . $row['movieId'] . "'";
+                    echo "Starring:";
+                    while($row2 = mysqli_fetch_assoc($result)){
+                        echo "\t ".$row2['Name']." as ".$row2['Role']."<br>";
+                    }
                 }
                 
               
