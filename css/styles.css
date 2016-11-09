@@ -1,0 +1,105 @@
+.header{
+    position:relative;
+    width:100%;
+}
+
+h1{
+    position:absolute;
+    top:30px;
+    left:0;
+    width:100%;
+}
+ 
+h1 span{
+    color: white;
+    font: bold 45px Helvetica, Sans-Serif;
+    letter-spacing: -1px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    padding:10px;
+}
+
+h2{
+    position:absolute;
+    top:100px;
+    left:0;
+    width:100%;
+}
+
+h2 span{
+    color:white;
+    font: bold 24px Helvetica, Sans-Serif;
+    letter-spacing: -1px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    padding:10px;
+}
+
+.navul{
+    list-style-type: none;
+    margin: 0;
+    background-color: #668cff;
+    padding: 3px 5px;
+    border-radius: 5px;
+    width: 902px;
+}
+
+.navli{
+    display: inline;
+    margin-left: 10px;
+    padding: 0px 3px;
+    color: white;
+    font-size: 24px;
+    font-family: verdana;
+}
+
+:link{
+    text-decoration: none;
+}
+
+.navli:hover{
+    color:black;
+    background-color:black;
+    
+}
+
+:visited{
+    color: white;
+    text-decoration: none;
+}
+
+.queryform{
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    margin-top: 1em;
+    width:250px;
+    height:500px;
+    background-color: gray;
+    padding:5px 5px;
+    float: left;
+    font-family: Helvetica;
+    font-size: 18px;
+}
+
+.submitbutton{
+    background-color: black;
+    color:white;
+    border-color: red;
+    border-style: solid;
+    border-width: 3px;
+}
+
+.distinctmovie{
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 1em;
+    margin-left: 5px;
+    float: left;
+    width: 500px;
+    height: 100px;
+    display: block;
+    font-family: Arial;
+    font-size: 18px;
+}
