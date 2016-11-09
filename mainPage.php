@@ -21,36 +21,41 @@
 <body>
     <form name="movieFilter" method="post">
         
-        <div class = "genreFilter">
-            <div class = "genreFilterTxt">
-               <b>Genre</b>
-            </div>
-       <!-- ************************Genre Filter************************************ -->
-       <!-- -->   <div class = "price">
-       <!-- -->           <input type="radio" name="genre" value="Horror"> Horror
-       <!-- -->           <input type="radio" name="genre" value="Western"> Western
-       <!-- -->           <input type="radio" name="genre" value="War"> War
-       <!-- -->           <input type="radio" name="genre" value="Sci-Fi"> Sci-Fi
-       <!-- -->           <input type="radio" name="genre" checked="checked" value="%"> All
-       <!-- -->   </div>
-       <!-- ************************************************************************ -->    
-        </div>
+    <!-- ************************Genre Filter************************************ -->
+    <!-- -->   <div class = "genreFilter">
+    <!-- -->        <div class = "genreFilterTxt">
+    <!-- -->            <b>Genre</b>
+    <!-- -->        </div>
+    <!-- -->        <div class = "price">
+    <!-- -->            <input type="radio" name="genre" value="Horror"> Horror
+    <!-- -->            <input type="radio" name="genre" value="Western"> Western
+    <!-- -->            <input type="radio" name="genre" value="War"> War
+    <!-- -->            <input type="radio" name="genre" value="Sci-Fi"> Sci-Fi
+    <!-- -->            <input type="radio" name="genre" checked="checked" value="%"> All
+    <!-- -->        </div>  
+    <!-- -->   </div>
+    <!-- ************************************************************************ -->
         
-        <div class = "yearFilter">
-            <div class = "yearFilterTxt">
-               <b>Year</b>
-            </div>
-            <div class = "yearList">
-                Select Movie Year: 
-                <select name = "movYear" size = "1">
-                    <option>1970's</option>
-                    <option>1980's</option>
-                    <option>1990's</option>
-                    <option>2000's</option>
-                    <option>2010's</option>
-                </select>
-            </div>
-        </div>
+    <!-- **********************Filter By Year*********************************** -->  
+    <!-- -->    <div class = "yearFilter">
+    <!-- -->        <div class = "yearFilterTxt">
+    <!-- -->           <b>Year</b>
+    <!-- -->        </div>
+    <!-- -->        <div class = "yearList">
+    <!-- -->            Select Movie Year: 
+    <!-- -->            <select name = "movYear" size = "1">
+    <!-- -->                <option selected="selected" value="%">Any</option>
+    <!-- -->                <option>1978</option>
+    <!-- -->                <option>1979</option>
+    <!-- -->                <option>1982</option>
+    <!-- -->                <option>1990</option>
+    <!-- -->                <option>2009</option>
+    <!-- -->                <option>2012</option>
+    <!-- -->                <option>2015</option>
+    <!-- -->            </select>
+    <!-- -->        </div>
+    <!-- -->    </div>
+    <!-- ************************************************************************ -->  
         
     <!-- ********************Filter By Rating************************************** -->
     <!-- -->    <div class = "ratingFilter">
@@ -61,19 +66,17 @@
     <!-- -->    </div>
     <!-- ************************************************************************ -->   
         
-        
         <div class = "button">
             <input type="submit" value="Filter">
         </div>
     </form>
 
     <div class="Movies">
-        
         <form name="addToCart" method="post">
             <?php
         
         //************************Generates CheckList from DB*********************
-        /**/        $query = "SELECT * FROM Movie WHERE Genre like '" . $_POST['genre'] . "' AND Rating > '" . $_POST['rating'] . "'";
+        /**/    $query = "SELECT * FROM Movie WHERE Genre like '" . $_POST['genre'] . "' AND Rating > '" . $_POST['rating'] . "' AND Year like '" . $_POST['movYear'] . "'";
         /**/        
         /**/        $result = mysqli_query($connection, $query);
         /**/
