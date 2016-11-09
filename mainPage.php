@@ -91,43 +91,49 @@
             <?php
 
     //************************Generates CheckList from DB********************
-    /**/    $query = "SELECT * FROM Movie WHERE Genre like '" . $_POST['genre'] . "' AND Rating > '" . $_POST['rating'] . "' AND Year like '" . $_POST['movYear'] . "' ORDER BY Name ". $_POST['order'];
+    /**/    $query = "SELECT * FROM Movie WHERE Genre like '" . $_POST['genre'] . "' AND Rating > '" . $_POST['rating'] . "' AND Year like '" . $_POST['movYear'] . "'";
     /**/        
     /**/        $result = mysqli_query($connection, $query);
     /**/
-    /**/        while ($row = mysqli_fetch_assoc($result))
-    /**/        {
-    /**/            echo "<input type='checkbox' name='addCart" . $row['MovieID'] . "' value='" . $row['MovieID'] . "'>";
+    /**/         while ($row = mysqli_fetch_assoc($result))
+    /**/         {
+    /**/            echo "<div id='sdMovie" . $row['MovieID'] . "'>";
+    /**/            echo  "<input type='checkbox' name='addCart" . $row['MovieID'] . "' value='" . $row['MovieID'] . "'>";
     /**/            echo $row['Name'] . " " . $row['Rating'] . " $" . $row['Gross'] . " " . $row['Genre'] . " " . $row['Year'] ."<br>";
-                    
-                    //Directors
-                    $queryA = "SELECT * FROM Directs INNER JOIN Biography ON Directs.bioId=Biography.bioId WHERE MovieId=".$row['MovieID'];
-                    $resultA = mysqli_query($connection, $queryA);
-                    echo "Directed By: <br>";
-                    while ($rowA = mysqli_fetch_assoc($resultA))
-    /**/            {
-                        echo $rowA["name"]."<br>";
-                    }
-                    
-                    //Actors
-                    $queryA = "SELECT * FROM Stars INNER JOIN Biography ON Stars.bioId=Biography.bioId WHERE MovieId=".$row['MovieID'];
-                    $resultA = mysqli_query($connection, $queryA);
-                    echo "Starring: <br>";
-                    while ($rowA = mysqli_fetch_assoc($resultA))
-    /**/            {
-                        echo $rowA["name"]." as ".$rowA["Role"]."<br>";
-                    }
-                    
-                    //Writers
-                    $queryA = "SELECT * FROM Writes INNER JOIN Biography ON Writes.bioId=Biography.bioId WHERE MovieId=".$row['MovieID'];
-                    $resultA = mysqli_query($connection, $queryA);
-                    echo "Written By: <br>";
-                    while ($rowA = mysqli_fetch_assoc($resultA))
-    /**/            {
-                        echo $rowA["name"]."<br>";
-                    }
+    /**/            echo "</div>";
     /**/
-    /**/        }
+    //************************Hidden Info************************************
+    /**/            echo "<div id='hdMovie" . $row['MovieID'] . "'>";
+    /**/            
+    /**/            //Directors
+    /**/            $queryA = "SELECT * FROM Directs INNER JOIN Biography ON Directs.bioId=Biography.bioId WHERE MovieId=".$row['MovieID'];
+    /**/            $resultA = mysqli_query($connection, $queryA);
+    /**/            echo "Directed By: <br>";
+    /**/            while ($rowA = mysqli_fetch_assoc($resultA))
+    /**/            {
+    /**/                echo $rowA["name"]."<br>";
+    /**/            }
+    /**/            
+    /**/            //Actors
+    /**/            $queryA = "SELECT * FROM Stars INNER JOIN Biography ON Stars.bioId=Biography.bioId WHERE MovieId=".$row['MovieID'];
+    /**/            $resultA = mysqli_query($connection, $queryA);
+    /**/            echo "Starring: <br>";
+    /**/            while ($rowA = mysqli_fetch_assoc($resultA))
+    /**/            {
+    /**/                echo $rowA["name"]." as ".$rowA["Role"]."<br>";
+    /**/            }
+    /**/            
+    /**/            //Writers
+    /**/            $queryA = "SELECT * FROM Writes INNER JOIN Biography ON Writes.bioId=Biography.bioId WHERE MovieId=".$row['MovieID'];
+    /**/            $resultA = mysqli_query($connection, $queryA);
+    /**/            echo "Written By: <br>";
+    /**/            while ($rowA = mysqli_fetch_assoc($resultA))
+    /**/            {
+    /**/                echo $rowA["name"]."<br>";
+    /**/            }
+    /**/
+    /**/            echo "</div>";
+    /**/         }
     //***********************************************************************       
                 
             ?>
