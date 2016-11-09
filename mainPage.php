@@ -52,12 +52,14 @@
             </div>
         </div>
         
-        <div class = "ratingFilter">
-            <b>Rating</b>
-            <div class = "rating">
-                Enter a minimum rating <input type="number" name="rating" max="10" value=""> (0-10 scale)
-            </div>
-        </div>
+    <!-- ********************Filter By Rating************************************** -->
+    <!-- -->    <div class = "ratingFilter">
+    <!-- -->        <b>Rating</b>
+    <!-- -->        <div class = "rating">
+    <!-- -->            Enter a minimum rating <input type="number" name="rating" max="10" value="0"> (0-10 scale)
+    <!-- -->        </div>
+    <!-- -->    </div>
+    <!-- ************************************************************************ -->   
         
         
         <div class = "button">
@@ -71,7 +73,7 @@
             <?php
         
         //************************Generates CheckList from DB*********************
-        /**/    $query = "SELECT * FROM Movie WHERE Genre like '" . $_POST['genre'] . "'";
+        /**/        $query = "SELECT * FROM Movie WHERE Genre like '" . $_POST['genre'] . "' AND Rating > '" . $_POST['rating'] . "'";
         /**/        
         /**/        $result = mysqli_query($connection, $query);
         /**/
