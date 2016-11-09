@@ -57,7 +57,7 @@
     <!-- -->    </div>
     <!-- ************************************************************************ -->  
         
-    <!-- ********************Filter By Rating************************************** -->
+    <!-- ********************Filter By Rating************************************ -->
     <!-- -->    <div class = "ratingFilter">
     <!-- -->        <b>Rating</b>
     <!-- -->        <div class = "rating">
@@ -75,7 +75,7 @@
         <form name="addToCart" method="post">
             <?php
         
-        //************************Generates CheckList from DB*********************
+        //************************Generates CheckList from DB********************
         /**/    $query = "SELECT * FROM Movie WHERE Genre like '" . $_POST['genre'] . "' AND Rating > '" . $_POST['rating'] . "' AND Year like '" . $_POST['movYear'] . "'";
         /**/        
         /**/        $result = mysqli_query($connection, $query);
