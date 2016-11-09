@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
     <?php
-    session_start();   
-        
+    session_start();
+    
         $host = "127.0.0.1";
         $user = "markmocek";
         $password = "";                              
         $db = "TeamDB";
         $port = 3306;
         
-         $connection = mysqli_connect($host, $user, $pass, $db, $port)or die(mysql_error());
+        $connection = mysqli_connect($host, $user, $pass, $db, $port)or die(mysql_error());
     
         $query = "SELECT * FROM Movies";
         $result = mysqli_query($connection, $query);
@@ -57,41 +56,80 @@
     <!-- -->    </div>
     <!-- ************************************************************************ -->  
         
-    <!-- ********************Filter By Rating************************************ -->
+    <!-- ********************Filter By Rating************************************** -->
     <!-- -->    <div class = "ratingFilter">
     <!-- -->        <b>Rating</b>
     <!-- -->        <div class = "rating">
     <!-- -->            Enter a minimum rating <input type="number" name="rating" max="10" value="0"> (0-10 scale)
     <!-- -->        </div>
     <!-- -->    </div>
-    <!-- ************************************************************************ -->   
-        
-        <div class = "button">
-            <input type="submit" value="Filter">
-        </div>
+    <!-- ************************************************************************** -->   
+     
+    <!-- ******************Filter Submit Button************************************ -->    
+    <!-- -->    <div class = "button">
+    <!-- -->        <input type="submit" value="Filter">
+    <!-- -->    </div>
+    <!-- ************************************************************************** --> 
+    
     </form>
-
+    
     <div class="Movies">
+        
         <form name="addToCart" method="post">
             <?php
-        
-        //************************Generates CheckList from DB********************
-        /**/    $query = "SELECT * FROM Movie WHERE Genre like '" . $_POST['genre'] . "' AND Rating > '" . $_POST['rating'] . "' AND Year like '" . $_POST['movYear'] . "'";
-        /**/        
-        /**/        $result = mysqli_query($connection, $query);
-        /**/
-        /**/         while ($row = mysqli_fetch_assoc($result))
-        /**/         {
-        /**/             echo  "<input type='checkbox' name='name' value=''>";
-        /**/            echo $row['Name'] . " " . $row['Rating'] . " " . $row['Gross'] . " " . $row['Genre'] . " " . $row['Year'] ."<br>";
-        /**/        }
-        //***********************************************************************       
-              
-        
+
+    //************************Generates CheckList from DB********************
+    /**/    $query = "SELECT * FROM Movie WHERE Genre like '" . $_POST['genre'] . "' AND Rating > '" . $_POST['rating'] . "' AND Year like '" . $_POST['movYear'] . "'";
+    /**/        
+    /**/        $result = mysqli_query($connection, $query);
+    /**/
+    /**/         while ($row = mysqli_fetch_assoc($result))
+    /**/         {
+    /**/             echo  "<input type='checkbox' name='addCart" . $row['MovieID'] . "' value='" . $row['MovieID'] . "'>";
+    /**/            echo $row['Name'] . " " . $row['Rating'] . " $" . $row['Gross'] . " " . $row['Genre'] . " " . $row['Year'] ."<br>";
+    /**/        }
+    //***********************************************************************       
+                
             ?>
+            
+    <!-- ********************Add To Cart Submit Button***************************** --> 
+    <!-- -->        <div class = "button">
+    <!-- -->            <input type="submit" value="Add To Cart">
+    <!-- -->        </div>
+    <!-- ************************************************************************** --> 
+    
         </form>
     </div>
     
+    <div class="Test Cart">
+        
+        <?php
+        
+    //*****************Assign Session Variables******************************
+    /**/    $_SESSION['CartMovie1'] = $_POST['addCart1'];
+    /**/
+    /**/    $_SESSION['CartMovie2'] = $_POST['addCart2'];
+    /**/
+    /**/    $_SESSION['CartMovie3'] = $_POST['addCart3'];
+    /**/
+    /**/    $_SESSION['CartMovie4'] = $_POST['addCart4'];
+    /**/
+    /**/    $_SESSION['CartMovie5'] = $_POST['addCart5'];
+    /**/
+    /**/    $_SESSION['CartMovie6'] = $_POST['addCart6'];
+    /**/
+    /**/    $_SESSION['CartMovie7'] = $_POST['addCart7'];
+    //***********************************************************************
+
+        ?>
+        
+    </div>
+    
+    <div class="goToCart">
+        <form method="get" action="cartPage.php">
+            <button type="submit">Go To Cart</button>
+        </form>
+    </div>
     
 </body>
 </html>
