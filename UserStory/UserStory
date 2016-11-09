@@ -1,0 +1,5 @@
+The site will provide a movie database for the user to interact with.
+The user will open the site to see a filter choices that work on genre, rating, and year of release.
+The user will be able to sort the results by name in either ascending or descending order
+Each movie will have a checkbox that will let the user add to a shopping cart that when checked out will
+create a library for the user to specify which movies thay have in their collections
