@@ -125,11 +125,13 @@
         
     </div>
     
-    <div class="goToCart">
-        <form method="get" action="cartPage.php">
-            <button type="submit">Go To Cart</button>
-        </form>
-    </div>
+    <!-- ************************Go To Cart Page*********************************** --> 
+    <!-- -->     <div class="goToCart">
+    <!-- -->        <form method="get" action="cartPage.php">
+    <!-- -->            <button type="submit">Go To Cart</button>
+    <!-- -->        </form>
+    <!-- -->     </div>
+    <!-- ************************************************************************** --> 
     
 </body>
 </html>
