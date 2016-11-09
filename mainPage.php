@@ -15,6 +15,10 @@
         $result = mysqli_query($connection, $query);
         
     ?>
+    
+    <!-- Link to JQuery file -->
+    <script src="jquery-3.1.1.min.js"></script>
+    
         <link rel="stylesheet" href="css/styles.css" type="text/css" />
         <div class="header">
             <img src="images/reel.jpg" alt="" />
@@ -178,6 +182,76 @@
     <!-- -->        </form>
     <!-- -->     </div>
     <!-- ************************************************************************** --> 
+    
+     <script type="text/javascript">
+        
+    //*********************Hidden Movie Info Loop*********************************
+    /**/
+    /**/                //Nothing Yet
+    /**/        
+    //****************************************************************************
+    
+    //*********************Hidden Movie Info**************************************
+    /**/
+    /**/            //One
+    /**/            $('#hdMovie1').hide();
+    /**/            
+    /**/            $('#sdMovie1').click(function()
+    /**/            {
+    /**/                $('#hdMovie1').toggle();
+    /**/            });
+    /**/
+    /**/            //Two
+    /**/            $('#hdMovie2').hide();
+    /**/            
+    /**/            $('#sdMovie2').click(function()
+    /**/            {
+    /**/                $('#hdMovie2').toggle();
+    /**/            });
+    /**/
+    /**/            //Three
+    /**/            $('#hdMovie3').hide();
+    /**/            
+    /**/            $('#sdMovie3').click(function()
+    /**/            {
+    /**/                $('#hdMovie3').toggle();
+    /**/            });
+    /**/
+    /**/            //Four
+    /**/            $('#hdMovie4').hide();
+    /**/            
+    /**/            $('#sdMovie4').click(function()
+    /**/            {
+    /**/                $('#hdMovie4').toggle();
+    /**/            });
+    /**/
+    /**/            //Five
+    /**/            $('#hdMovie5').hide();
+    /**/            
+    /**/            $('#sdMovie5').click(function()
+    /**/            {
+    /**/                $('#hdMovie5').toggle();
+    /**/            });
+    /**/
+    /**/            //Six
+    /**/            $('#hdMovie6').hide();
+    /**/            
+    /**/            $('#sdMovie6').click(function()
+    /**/            {
+    /**/                $('#hdMovie6').toggle();
+    /**/            });
+    /**/
+    /**/            //Seven
+    /**/            $('#hdMovie7').hide();
+    /**/            
+    /**/            $('#sdMovie7').click(function()
+    /**/            {
+    /**/                $('#hdMovie7').toggle();
+    /**/            });
+    /**/        
+    //****************************************************************************
+        
+    </script>
     
 </body>
 </html>
