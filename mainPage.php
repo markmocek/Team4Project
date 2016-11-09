@@ -3,9 +3,16 @@
 <head>
     <?php
     session_start();
+<<<<<<< HEAD
         $host = getenv('IP');
         $user = "web_user";
         $pass = "s3cr3t";                              
+=======
+    
+        $host = "127.0.0.1";
+        $user = "markmocek";
+        $password = "";                              
+>>>>>>> ecb1a56a7c4c88b3bd07bb3ee060020cadf9f77e
         $db = "TeamDB";
         $port = 3306;
         
@@ -33,6 +40,7 @@
     <!-- -->        </div>  
     <!-- -->   </div>
     <!-- ************************************************************************ -->
+<<<<<<< HEAD
         
     <!-- **********************Filter By Year*********************************** -->  
     <!-- -->    <div class = "yearFilter">
@@ -55,6 +63,30 @@
     <!-- -->    </div>
     <!-- ************************************************************************ -->  
         
+=======
+        
+    <!-- **********************Filter By Year*********************************** -->  
+    <!-- -->    <div class = "yearFilter">
+    <!-- -->        <div class = "yearFilterTxt">
+    <!-- -->           <b>Year</b>
+    <!-- -->        </div>
+    <!-- -->        <div class = "yearList">
+    <!-- -->            Select Movie Year: 
+    <!-- -->            <select name = "movYear" size = "1">
+    <!-- -->                <option selected="selected" value="%">Any</option>
+    <!-- -->                <option>1978</option>
+    <!-- -->                <option>1979</option>
+    <!-- -->                <option>1982</option>
+    <!-- -->                <option>1990</option>
+    <!-- -->                <option>2009</option>
+    <!-- -->                <option>2012</option>
+    <!-- -->                <option>2015</option>
+    <!-- -->            </select>
+    <!-- -->        </div>
+    <!-- -->    </div>
+    <!-- ************************************************************************ -->  
+        
+>>>>>>> ecb1a56a7c4c88b3bd07bb3ee060020cadf9f77e
     <!-- ********************Filter By Rating************************************** -->
     <!-- -->    <div class = "ratingFilter">
     <!-- -->        <b>Rating</b>
@@ -82,6 +114,7 @@
     /**/        
     /**/        $result = mysqli_query($connection, $query);
     /**/
+<<<<<<< HEAD
     /**/        while ($row = mysqli_fetch_assoc($result))
     /**/        {
     /**/            echo "<input type='checkbox' name='addCart" . $row['MovieID'] . "' value='" . $row['MovieID'] . "'>";
@@ -113,6 +146,12 @@
     /**/            {
                         echo $rowA["name"]."<br>";
                     }
+=======
+    /**/         while ($row = mysqli_fetch_assoc($result))
+    /**/         {
+    /**/             echo  "<input type='checkbox' name='addCart" . $row['MovieID'] . "' value='" . $row['MovieID'] . "'>";
+    /**/            echo $row['Name'] . " " . $row['Rating'] . " $" . $row['Gross'] . " " . $row['Genre'] . " " . $row['Year'] ."<br>";
+>>>>>>> ecb1a56a7c4c88b3bd07bb3ee060020cadf9f77e
     /**/        }
     //***********************************************************************       
                 
