@@ -3,11 +3,7 @@
 <head>
     <?php
     session_start();
-        $host = getenv('IP');
-        $user = "web_user";
-        $pass = "s3cr3t";                              
-        $db = "TeamDB";
-        $port = 3306;
+        include './cst336/DatabaseConnection.php';
         
         $connection = mysqli_connect($host, $user, $pass, $db, $port)or die(mysql_error());
     
