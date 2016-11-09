@@ -97,13 +97,13 @@ CREATE TABLE IF NOT EXISTS `Movie` (
 --
 
 INSERT INTO `Movie` (`MovieID`, `Name`, `Rating`, `Gross`, `Genre`, `Year`) VALUES
-(1, 'The Thing', 8.20, 0.00, 'Horror', 1982),
-(2, 'Escape from New York', 7.20, 0.00, 'Sci-Fi', 1979),
-(3, 'Halloween', 7.90, 0.00, 'Horror', 1978),
-(4, 'The Hateful Eight', 7.90, 0.00, 'Western', 2015),
-(5, 'Django Unchained', 8.50, 0.00, 'Western', 2012),
-(6, 'Inglourious Basterds', 8.20, 0.00, 'War', 2009),
-(7, 'Tremors', 7.20, 0.00, 'Horror', 1990);
+(1, 'The Thing', 8.20, 19629760.00, 'Horror', 1982),
+(2, 'Escape from New York', 7.20, 25244700.00, 'Sci-Fi', 1979),
+(3, 'Halloween', 7.90, 58272029.00, 'Horror', 1978),
+(4, 'The Hateful Eight', 7.90, 54117416.00, 'Western', 2015),
+(5, 'Django Unchained', 8.50, 162805434.00, 'Western', 2012),
+(6, 'Inglourious Basterds', 8.20, 321455689.00, 'War', 2009),
+(7, 'Tremors', 7.20, 16667084.00, 'Horror', 1990);
 
 -- --------------------------------------------------------
 
