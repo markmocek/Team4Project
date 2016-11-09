@@ -4,8 +4,8 @@
     <?php
     session_start();
         $host = getenv('IP');
-        $user = "web_user";
-        $pass = "s3cr3t";                              
+        $user = getenv("C9_USER");
+        $pass = "";                              
         $db = "TeamDB";
         $port = 3306;
         
@@ -15,6 +15,13 @@
         $result = mysqli_query($connection, $query);
         
     ?>
+        <link rel="stylesheet" href="css/styles.css" type="text/css" />
+        <div class="header">
+            <img src="images/reel.jpg" alt="" />
+            
+            <h1><span>CSUMBMDB</span></h1>
+            <h2><span>CSU Monterey Bay Movie Database</span></h2>
+        </div>
 </head>
 <body>
     <form name="movieFilter" method="post">
