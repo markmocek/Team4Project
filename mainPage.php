@@ -24,7 +24,12 @@
         </div>
 </head>
 <body>
-    <form name="movieFilter" method="post">
+        <ul class="navul">
+            <li class="navli"><a href = "mainPage.php">Main Page</a></li>
+            <li class="navli"><a href = "">Best of 2016</a></li>
+            <li class="navli"><a href = "cartPage.php">My Favorites</a></li>
+        </ul>
+    <form name="movieFilter" method="post" class="queryform">
         
     <!-- ************************Genre Filter************************************ -->
     <!-- -->   <div class = "genreFilter">
@@ -97,8 +102,14 @@
     /**/
     /**/        while ($row = mysqli_fetch_assoc($result))
     /**/        {
+                    echo "<div class="."distinctmovie".">";
+        
     /**/            echo "<input type='checkbox' name='addCart" . $row['MovieID'] . "' value='" . $row['MovieID'] . "'>";
-    /**/            echo $row['Name'] . " " . $row['Rating'] . " $" . $row['Gross'] . " " . $row['Genre'] . " " . $row['Year'] ."<br>";
+    /**/            echo "<br>";
+                    echo "Title: ".$row['Name']."<br>";
+                    echo "Genre:".$row['Genre']."<br>";
+                    echo "Rating: ".$row['Rating']."<br>";
+                    echo "Year: ".$row['Year'] ."<br>";
                     
                     //Directors
                     $queryA = "SELECT * FROM Directs INNER JOIN Biography ON Directs.bioId=Biography.bioId WHERE MovieId=".$row['MovieID'];
@@ -126,6 +137,8 @@
     /**/            {
                         echo $rowA["name"]."<br>";
                     }
+                    
+                    echo "</div>";
     /**/
     /**/        }
     //***********************************************************************       
