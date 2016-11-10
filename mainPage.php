@@ -3,15 +3,11 @@
 <head>
     <?php
     session_start();
-<<<<<<< HEAD
-        include './cst336/DatabaseConnection.php';
-=======
         $host = getenv('IP');
         $user = getenv("C9_USER");
         $pass = "";                              
         $db = "TeamDB";
         $port = 3306;
->>>>>>> 4ac4f0d355aa74e47fb69f8fa06e3a2e053d29b6
         
         $connection = mysqli_connect($host, $user, $pass, $db, $port)or die(mysql_error());
     
@@ -25,19 +21,21 @@
     
         <link rel="stylesheet" href="css/styles.css" type="text/css" />
         <div class="header">
-            <img src="images/reel.jpg" alt="" />
+            <img src="images/reel.jpg" alt="" class="headerimage"/>
             
             <h1><span>CSUMBMDB</span></h1>
             <h2><span>CSU Monterey Bay Movie Database</span></h2>
         </div>
 </head>
-<body>
-    <form name="movieFilter" method="post">
+<body background="images/curtain.jpg">
+    <form name="movieFilter" method="post" class="queryform">
         
     <!-- ************************Genre Filter************************************ -->
     <!-- -->   <div class = "genreFilter">
+                    <strong style="font-size: 36px;">Search</strong>
+                    <br>
     <!-- -->        <div class = "genreFilterTxt">
-    <!-- -->            <b>Genre</b>
+    <!-- -->            <b><u>Genre</u></b>
     <!-- -->        </div>
     <!-- -->        <div class = "price">
     <!-- -->            <input type="radio" name="genre" value="Horror"> Horror
@@ -48,11 +46,11 @@
     <!-- -->        </div>  
     <!-- -->   </div>
     <!-- ************************************************************************ -->
-        
+        <br>
     <!-- **********************Filter By Year*********************************** -->  
     <!-- -->    <div class = "yearFilter">
     <!-- -->        <div class = "yearFilterTxt">
-    <!-- -->           <b>Year</b>
+    <!-- -->           <b><u>Year</u></b>
     <!-- -->        </div>
     <!-- -->        <div class = "yearList">
     <!-- -->            Select Movie Year: 
@@ -69,25 +67,27 @@
     <!-- -->        </div>
     <!-- -->    </div>
     <!-- ************************************************************************ -->  
-        
+        <br>
     <!-- ********************Filter By Rating************************************** -->
     <!-- -->    <div class = "ratingFilter">
-    <!-- -->        <b>Rating</b>
+    <!-- -->        <b><u>Rating</u></b>
     <!-- -->        <div class = "rating">
-    <!-- -->            Enter a minimum rating <input type="number" name="rating" max="10" value="0"> (0-10 scale)
+    <!-- -->            Enter a minimum rating <input type="number" name="rating" max="10" value="0" style="width:50px;"> (0-10 scale)
     <!-- -->        </div>
     <!-- -->    </div>
     <!-- ************************************************************************** -->   
+        <br>
                 <div class = "OrderFilter">
-                    <b>Order by Name: </b>
+                    <b><u>Order by Title:</u></b>
                     <div class = "order">
                         <input type="radio" name="order" value="ASC" checked> Ascending
     <!-- -->            <input type="radio" name="order" value="DESC"> Descending
                     </div>
                 </div>
+        <br>
     <!-- ******************Filter Submit Button************************************ -->    
     <!-- -->    <div class = "button">
-    <!-- -->        <input type="submit" value="Filter">
+    <!-- -->        <input type="submit" value="Filter" class="submitbutton">
     <!-- -->    </div>
     <!-- ************************************************************************** --> 
     
@@ -105,9 +105,12 @@
     /**/
     /**/         while ($row = mysqli_fetch_assoc($result))
     /**/         {
-    /**/            echo "<div id='sdMovie" . $row['MovieID'] . "'>";
+    /**/            echo "<div class="."distinctmovie"." id='sdMovie" . $row['MovieID'] . "'>";
     /**/            echo  "<input type='checkbox' name='addCart" . $row['MovieID'] . "' value='" . $row['MovieID'] . "'>";
-    /**/            echo $row['Name'] . " " . $row['Rating'] . " $" . $row['Gross'] . " " . $row['Genre'] . " " . $row['Year'] ."<br>";
+    /**/            echo "Title: ".$row['Name']."<br>";
+                    echo "Genre: ".$row['Genre']."<br>";
+                    echo "Year: ".$row['Year']."<br>";
+                    echo "Rating: ".$row['Rating']." / 10"."<br>";
     /**/            echo "</div>";
     /**/
     //************************Hidden Info************************************
@@ -148,7 +151,7 @@
             
     <!-- ********************Add To Cart Submit Button***************************** --> 
     <!-- -->        <div class = "button">
-    <!-- -->            <input type="submit" value="Add To Cart">
+    <!-- -->            <input type="submit" value="Add To Favorites" class="submitbutton">
     <!-- -->        </div>
     <!-- ************************************************************************** --> 
     
@@ -182,7 +185,7 @@
     <!-- ************************Go To Cart Page*********************************** --> 
     <!-- -->     <div class="goToCart">
     <!-- -->        <form method="get" action="cartPage.php">
-    <!-- -->            <button type="submit">Go To Cart</button>
+    <!-- -->            <button type="submit" class="submitbutton">See Favorites</button>
     <!-- -->        </form>
     <!-- -->     </div>
     <!-- ************************************************************************** --> 
@@ -256,6 +259,6 @@
     //****************************************************************************
         
     </script>
-    
+
 </body>
 </html>
