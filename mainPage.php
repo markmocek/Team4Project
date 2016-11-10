@@ -3,7 +3,15 @@
 <head>
     <?php
     session_start();
+<<<<<<< HEAD
         include './cst336/DatabaseConnection.php';
+=======
+        $host = getenv('IP');
+        $user = getenv("C9_USER");
+        $pass = "";                              
+        $db = "TeamDB";
+        $port = 3306;
+>>>>>>> 4ac4f0d355aa74e47fb69f8fa06e3a2e053d29b6
         
         $connection = mysqli_connect($host, $user, $pass, $db, $port)or die(mysql_error());
     
@@ -11,6 +19,17 @@
         $result = mysqli_query($connection, $query);
         
     ?>
+    
+    <!-- Link to JQuery file -->
+    <script src="jquery-3.1.1.min.js"></script>
+    
+        <link rel="stylesheet" href="css/styles.css" type="text/css" />
+        <div class="header">
+            <img src="images/reel.jpg" alt="" />
+            
+            <h1><span>CSUMBMDB</span></h1>
+            <h2><span>CSU Monterey Bay Movie Database</span></h2>
+        </div>
 </head>
 <body>
     <form name="movieFilter" method="post">
@@ -80,43 +99,49 @@
             <?php
 
     //************************Generates CheckList from DB********************
-    /**/    $query = "SELECT * FROM Movie WHERE Genre like '" . $_POST['genre'] . "' AND Rating > '" . $_POST['rating'] . "' AND Year like '" . $_POST['movYear'] . "' ORDER BY Name ". $_POST['order'];
+    /**/    $query = "SELECT * FROM Movie WHERE Genre like '" . $_POST['genre'] . "' AND Rating > '" . $_POST['rating'] . "' AND Year like '" . $_POST['movYear'] . "'";
     /**/        
     /**/        $result = mysqli_query($connection, $query);
     /**/
-    /**/        while ($row = mysqli_fetch_assoc($result))
-    /**/        {
-    /**/            echo "<input type='checkbox' name='addCart" . $row['MovieID'] . "' value='" . $row['MovieID'] . "'>";
+    /**/         while ($row = mysqli_fetch_assoc($result))
+    /**/         {
+    /**/            echo "<div id='sdMovie" . $row['MovieID'] . "'>";
+    /**/            echo  "<input type='checkbox' name='addCart" . $row['MovieID'] . "' value='" . $row['MovieID'] . "'>";
     /**/            echo $row['Name'] . " " . $row['Rating'] . " $" . $row['Gross'] . " " . $row['Genre'] . " " . $row['Year'] ."<br>";
-                    
-                    //Directors
-                    $queryA = "SELECT * FROM Directs INNER JOIN Biography ON Directs.bioId=Biography.bioId WHERE MovieId=".$row['MovieID'];
-                    $resultA = mysqli_query($connection, $queryA);
-                    echo "Directed By: <br>";
-                    while ($rowA = mysqli_fetch_assoc($resultA))
-    /**/            {
-                        echo $rowA["name"]."<br>";
-                    }
-                    
-                    //Actors
-                    $queryA = "SELECT * FROM Stars INNER JOIN Biography ON Stars.bioId=Biography.bioId WHERE MovieId=".$row['MovieID'];
-                    $resultA = mysqli_query($connection, $queryA);
-                    echo "Starring: <br>";
-                    while ($rowA = mysqli_fetch_assoc($resultA))
-    /**/            {
-                        echo $rowA["name"]." as ".$rowA["Role"]."<br>";
-                    }
-                    
-                    //Writers
-                    $queryA = "SELECT * FROM Writes INNER JOIN Biography ON Writes.bioId=Biography.bioId WHERE MovieId=".$row['MovieID'];
-                    $resultA = mysqli_query($connection, $queryA);
-                    echo "Written By: <br>";
-                    while ($rowA = mysqli_fetch_assoc($resultA))
-    /**/            {
-                        echo $rowA["name"]."<br>";
-                    }
+    /**/            echo "</div>";
     /**/
-    /**/        }
+    //************************Hidden Info************************************
+    /**/            echo "<div id='hdMovie" . $row['MovieID'] . "'>";
+    /**/            
+    /**/            //Directors
+    /**/            $queryA = "SELECT * FROM Directs INNER JOIN Biography ON Directs.bioId=Biography.bioId WHERE MovieId=".$row['MovieID'];
+    /**/            $resultA = mysqli_query($connection, $queryA);
+    /**/            echo "Directed By: <br>";
+    /**/            while ($rowA = mysqli_fetch_assoc($resultA))
+    /**/            {
+    /**/                echo $rowA["name"]."<br>";
+    /**/            }
+    /**/            
+    /**/            //Actors
+    /**/            $queryA = "SELECT * FROM Stars INNER JOIN Biography ON Stars.bioId=Biography.bioId WHERE MovieId=".$row['MovieID'];
+    /**/            $resultA = mysqli_query($connection, $queryA);
+    /**/            echo "Starring: <br>";
+    /**/            while ($rowA = mysqli_fetch_assoc($resultA))
+    /**/            {
+    /**/                echo $rowA["name"]." as ".$rowA["Role"]."<br>";
+    /**/            }
+    /**/            
+    /**/            //Writers
+    /**/            $queryA = "SELECT * FROM Writes INNER JOIN Biography ON Writes.bioId=Biography.bioId WHERE MovieId=".$row['MovieID'];
+    /**/            $resultA = mysqli_query($connection, $queryA);
+    /**/            echo "Written By: <br>";
+    /**/            while ($rowA = mysqli_fetch_assoc($resultA))
+    /**/            {
+    /**/                echo $rowA["name"]."<br>";
+    /**/            }
+    /**/
+    /**/            echo "</div>";
+    /**/         }
     //***********************************************************************       
                 
             ?>
@@ -161,6 +186,76 @@
     <!-- -->        </form>
     <!-- -->     </div>
     <!-- ************************************************************************** --> 
+    
+     <script type="text/javascript">
+        
+    //*********************Hidden Movie Info Loop*********************************
+    /**/
+    /**/                //Nothing Yet
+    /**/        
+    //****************************************************************************
+    
+    //*********************Hidden Movie Info**************************************
+    /**/
+    /**/            //One
+    /**/            $('#hdMovie1').hide();
+    /**/            
+    /**/            $('#sdMovie1').click(function()
+    /**/            {
+    /**/                $('#hdMovie1').toggle();
+    /**/            });
+    /**/
+    /**/            //Two
+    /**/            $('#hdMovie2').hide();
+    /**/            
+    /**/            $('#sdMovie2').click(function()
+    /**/            {
+    /**/                $('#hdMovie2').toggle();
+    /**/            });
+    /**/
+    /**/            //Three
+    /**/            $('#hdMovie3').hide();
+    /**/            
+    /**/            $('#sdMovie3').click(function()
+    /**/            {
+    /**/                $('#hdMovie3').toggle();
+    /**/            });
+    /**/
+    /**/            //Four
+    /**/            $('#hdMovie4').hide();
+    /**/            
+    /**/            $('#sdMovie4').click(function()
+    /**/            {
+    /**/                $('#hdMovie4').toggle();
+    /**/            });
+    /**/
+    /**/            //Five
+    /**/            $('#hdMovie5').hide();
+    /**/            
+    /**/            $('#sdMovie5').click(function()
+    /**/            {
+    /**/                $('#hdMovie5').toggle();
+    /**/            });
+    /**/
+    /**/            //Six
+    /**/            $('#hdMovie6').hide();
+    /**/            
+    /**/            $('#sdMovie6').click(function()
+    /**/            {
+    /**/                $('#hdMovie6').toggle();
+    /**/            });
+    /**/
+    /**/            //Seven
+    /**/            $('#hdMovie7').hide();
+    /**/            
+    /**/            $('#sdMovie7').click(function()
+    /**/            {
+    /**/                $('#hdMovie7').toggle();
+    /**/            });
+    /**/        
+    //****************************************************************************
+        
+    </script>
     
 </body>
 </html>
