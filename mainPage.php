@@ -84,7 +84,6 @@
     <!-- -->            <input type="radio" name="order" value="DESC"> Descending
                     </div>
                 </div>
-        <br>
     <!-- ******************Filter Submit Button************************************ -->    
     <!-- -->    <div class = "button">
     <!-- -->        <input type="submit" value="Filter" class="submitbutton">
